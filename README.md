@@ -1,1 +1,1 @@
-# tester-py
+# Ett gemensamt repo för grupp 3 på Github
