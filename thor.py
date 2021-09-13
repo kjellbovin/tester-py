@@ -81,12 +81,36 @@ def compound_interest(cash, rate, time):
     ci = a - cash
     return round(ci, 2)
 
+def print_bank_result(amount_cash, yearly_rate, periods):
+    # print out result of using bank to save money
+    print('\n---------------RESULTAT---------------')
+    print(f'\nSammansatt ränta efter {periods} år: {compound_interest(amount_cash, yearly_rate, periods)}')
+    print(f'\nTotalt efter {periods} år: {amount_cash + compound_interest(amount_cash, yearly_rate, periods)}')
+
 #Begär input från användaren
 amount_cash = float(input('Hur mycket pengar har du idag: '))
-yearly_rate = float(input('Ränta i procent: '))
 periods = int(input('Antal år att räkna på: '))
 
-#Returnera två resultat - dels den sammansätta räntan men också total summa efter ränta
-print('\n---------------RESULTAT---------------')
-print(f'\nSammansatt ränta efter {periods} år: {compound_interest(amount_cash, yearly_rate, periods)}')
-print(f'\nTotalt efter {periods} år: {amount_cash + compound_interest(amount_cash, yearly_rate, periods)}')
+bank_or_investment = int(input('Vill du \n1: Spara pengar på en bank. \n2: Göra en riskfyld investering \n: '))
+while True:
+    if bank_or_investment == 1 or bank_or_investment == 2:
+        break
+    print("Du måste välj 1 för att spara på en bank eller 2 för att göra en riskfyld investering")
+    bank_or_investment = int(input(': '))
+
+# if bank_or_investment is 1 proced with bank savings
+if bank_or_investment == 1:
+    yearly_rate = float(input('Ränta i procent: '))
+    print_bank_result(amount_cash, yearly_rate, periods)
+
+# if bank_or_investment 2 proced with risky investment
+elif bank_or_investment == 2:
+    risky_investment(amount_cash, periods)
+
+# something is wrong with how bank_or_investment is handle as i shall only be 1 or 2
+else:
+    error_msg = f"""
+Something went wrong when bank_or_investment \
+should only be int 1 or 2 when bank_or_investment now is: {bank_or_investment}
+"""
+    raise Exception(error_msg)
