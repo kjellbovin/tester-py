@@ -5,7 +5,7 @@ def compound_interest(cash, rate, time):
     return round(ci, 2)
 
 #Begär input från användaren
-amount_cash = int(input('Hur mycket pengar har du idag: '))
+amount_cash = float(input('Hur mycket pengar har du idag: '))
 yearly_rate = float(input('Ränta i procent: '))
 periods = int(input('Antal år att räkna på: '))
 
@@ -13,6 +13,3 @@ periods = int(input('Antal år att räkna på: '))
 print('\n---------------RESULTAT---------------')
 print(f'\nSammansatt ränta efter {periods} år: {compound_interest(amount_cash, yearly_rate, periods)}')
 print(f'\nTotalt efter {periods} år: {amount_cash + compound_interest(amount_cash, yearly_rate, periods)}')
-
-# Nicklas Thor was here
-
